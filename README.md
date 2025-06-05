@@ -64,7 +64,7 @@ python how_answer_eval.py --n_sampling 4
 
 The selected strategy is instantiated as a specific prompt template to guide the answer generation model.
 
-Specifically, the short CoT strategy appends a concise marker — {'<think>' Okay, I think I have finished thinking. '</think>'} — to indicate minimal reasoning. In contrast, the long CoT strategy prepends the token {'<think>'} to prompt the model to perform more detailed, step-by-step reasoning.
+Specifically, the short CoT strategy appends a concise marker — {`<think>` Okay, I think I have finished thinking. `</think>`} — to indicate minimal reasoning. In contrast, the long CoT strategy prepends the token {`<think>`} to prompt the model to perform more detailed, step-by-step reasoning.
 
 ```bash
 cd evaluation
