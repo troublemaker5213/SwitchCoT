@@ -1,0 +1,48 @@
+### model
+model_name_or_path: modelpath_for_DeepSeek-R1-Distill-Qwen-7B
+trust_remote_code: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+freeze_vision_tower: true
+freeze_multi_modal_projector: true
+freeze_language_model: false
+deepspeed: examples/deepspeed/ds_z3_config.json
+
+### dataset
+dataset: train_dataa
+template: deepseek3
+cutoff_len: 2048
+max_samples: 20000
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+
+### output
+output_dir: your_output_dir
+save_total_limit: 5
+logging_steps: 50
+save_steps: 1000
+plot_loss: true
+overwrite_output_dir: true
+save_only_model: false
+# report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
+
+### train
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 1
+learning_rate: 1.0e-6
+num_train_epochs: 8
+lr_scheduler_type: constant
+warmup_steps: 10
+bf16: true
+ddp_timeout: 180000000
+resume_from_checkpoint: false
+
+### eval
+# val_size: 0.1
+# per_device_eval_batch_size: 8
+# eval_strategy: steps
+# eval_steps: 100
